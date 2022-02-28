@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1F - 9x9 乘法表</title>
+    <style>
+        @font-face {
+            font-family: 'PingFang TC';
+            src: url(./static/PingFang\ Medium.ttf);
+        }
+
+        :root {
+            --base-green: #2EB738;
+        }
+        
+        * {
+            font-family: PingFang TC;
+            color: var(--base-green);
+        }
+
+
+        .mutiplication {
+            width: 100%;
+            max-width: 1280px;
+            box-sizing: border-box;
+            margin: auto;
+            padding: 80px 85px;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            row-gap: 40px;
+            column-gap: 30px;
+            background: #F0F0F0;
+        }
+
+        .mutiplication-title {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .mutiplication-title h1,.mutiplication-title h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mutiplication-title h1 {
+            font-size: 56px;
+        }
+
+        .mutiplication-title h2 {
+            font-size: 24px;
+        }
+
+        .mutiplication-content {
+            width: 350px;
+            height: 366px;
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(6, 33px);
+            grid-auto-flow: column;
+            column-gap: 32px;
+            row-gap: 8px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 3px 10px #D8D8D8;
+            border-radius: 100px 0px 30px 0px;
+            box-sizing: border-box;
+        }
+
+        .multiplier {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-row-start: 1;
+            grid-row-end: 4;
+            font-size: 128px;
+            font-weight: bold;
+            line-height: 0;
+            text-shadow: 4px 3px 0px #F0F0F0;
+        }
+
+        .formula {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .decoration {
+            height: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .line {
+            width: 280px;
+            height: 1px;
+            background: var(--base-green);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="mutiplication">
+        <div class="mutiplication-title">
+            <div class="decoration">
+                <div class="cross">×</div>
+                <div class="line"></div>
+                <div class="cross">×</div>
+            </div>
+            <div class="title-content">
+                <h1>九九乘法表</h1>
+                <h2>MULTIPLICATION CHART</h2>
+            </div>
+            <div class="decoration">
+                <div class="cross">×</div>
+                <div class="line"></div>
+                <div class="cross">×</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const mutiplicationDom = document.querySelector('.mutiplication');
+        console.log("🚀 ~ file: index.html ~ line 49 ~ mutiplicationDom", mutiplicationDom)
+
+        // 產生連續數字陣列
+        // [...Array(9).keys()]
+        // [...Array(10).keys()].filter(i => i>0)
+        console.log("🚀 ~ file: index.html ~ line 49 ~ [...Array(9).keys().filter(i => i>0)]", [...Array(10).keys()].filter(i => i>0));
+
+        [...Array(8).keys()].forEach(i => {
+            console.log("🚀 ~ file: index.html ~ line 52 ~ [...Array ~ i", i+2);
+            const mutiplicationContentDom = document.createElement('div');
+            console.log("🚀 ~ file: index.html ~ line 58 ~ [...Array ~ mutiplicationContentDom", mutiplicationContentDom)
+            mutiplicationContentDom.classList.add('mutiplication-content');
+            
+            const multiplierDom = document.createElement('div');
+            multiplierDom.classList.add('multiplier');
+            multiplierDom.append(i+2);
+            mutiplicationContentDom.append(multiplierDom);
+            [...Array(9).keys()].forEach(j => {
+                console.log("🚀 ~ file: index.html ~ line 54 ~ [...Array ~ j", (i+2)*(j+1))
+                const formula = `${i+2} × ${j+1} = ${(i+2)*(j+1)}`;
+                const formulaDom = document.createElement('div');
+                formulaDom.classList.add('formula');
+                formulaDom.append(formula);
+                mutiplicationContentDom.append(formulaDom);
+            })
+            mutiplicationDom.append(mutiplicationContentDom)
+        })
+    </script>
+</body>
+</html>
